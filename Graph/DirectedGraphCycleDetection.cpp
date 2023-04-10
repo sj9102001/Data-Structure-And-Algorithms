@@ -20,14 +20,17 @@ bool dfs(int node,vector<int> adj[], vector<int> &vis, vector<int> &pathVis) {
 }
 
 bool usingTopo(int V, vector<int> adj[]) {
+    //using Kahns algorithm
     vector<int> topo;
     vector<int> indegree(V, 0);
+
     for(int i=0;i<V;i++) {
         for(auto adjNode: adj[i]) {
             indegree[adjNode]++;
         }
     }
     
+    //queue which stores all nodes with indegree 0
     queue<int> q;
     for(int i=0;i<V;i++) {
         if(indegree[i] == 0) q.push(i);
